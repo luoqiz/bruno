@@ -8,17 +8,18 @@ class BrnSelectionMenuItemWidget extends StatelessWidget {
   final String title;
   final bool isHighLight;
   final bool active;
+  final MainAxisAlignment alignment;
   final VoidCallback? itemClickFunction;
 
   BrnSelectionConfig themeData;
 
-  BrnSelectionMenuItemWidget(
-      {Key? key,
-      required this.title,
-      this.isHighLight = false,
-      this.active = false,
-      this.itemClickFunction,
-      required this.themeData})
+  BrnSelectionMenuItemWidget({Key? key,
+    required this.title,
+    this.isHighLight = false,
+    this.active = false,
+    this.alignment = MainAxisAlignment.center,
+    this.itemClickFunction,
+    required this.themeData})
       : super(key: key);
 
   @override
@@ -32,36 +33,36 @@ class BrnSelectionMenuItemWidget extends StatelessWidget {
           color: Colors.transparent,
           constraints: BoxConstraints.expand(),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: alignment,
             children: <Widget>[
               Container(
                   child: Flexible(
-                child: Text(
-                  this.title,
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  softWrap: true,
-                  style: isHighLight
-                      ? themeData.menuSelectedTextStyle.generateTextStyle()
-                      : themeData.menuNormalTextStyle.generateTextStyle(),
-                ),
-              )),
+                    child: Text(
+                      this.title,
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      softWrap: true,
+                      style: isHighLight
+                          ? themeData.menuSelectedTextStyle.generateTextStyle()
+                          : themeData.menuNormalTextStyle.generateTextStyle(),
+                    ),
+                  )),
               Padding(
                   padding: EdgeInsets.only(left: 4),
                   child: isHighLight
                       ? (active
-                          ? BrunoTools.getAssetImageWithBandColor(
-                              BrnAsset.iconArrowUpSelect,
-                              configId: themeData.configId)
-                          : BrunoTools.getAssetImageWithBandColor(
-                              BrnAsset.iconArrowDownSelect))
+                      ? BrunoTools.getAssetImageWithBandColor(
+                      BrnAsset.iconArrowUpSelect,
+                      configId: themeData.configId)
+                      : BrunoTools.getAssetImageWithBandColor(
+                      BrnAsset.iconArrowDownSelect))
                       : (active
-                          ? BrunoTools.getAssetImageWithBandColor(
-                              BrnAsset.iconArrowUpSelect,
-                              configId: themeData.configId)
-                          : BrunoTools.getAssetImage(
-                              BrnAsset.iconArrowDownUnSelect)))
+                      ? BrunoTools.getAssetImageWithBandColor(
+                      BrnAsset.iconArrowUpSelect,
+                      configId: themeData.configId)
+                      : BrunoTools.getAssetImage(
+                      BrnAsset.iconArrowDownUnSelect)))
             ],
           ),
         ),
