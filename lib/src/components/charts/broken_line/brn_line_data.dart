@@ -40,6 +40,7 @@ class BrnPointData {
   /// 折线节点的点击击事件是否可用
   bool isClickable;
 
+  /// 点击时附加信息展示
   BrnLineTouchData lineTouchData;
 
   BrnPointData(
@@ -107,10 +108,6 @@ class BrnPointsLine {
   /// 点内圈的半径
   double? pointInnerRadius;
 
-  /// 是否显示x轴的文字，用来处理多个线条绘制的时候，同一x轴坐标不需要绘制多次，则只需要将多条线中一个标记绘制即可
-  @Deprecated('该字段废弃，X刻度是否绘制由 [BrnBrokenLine.isShowXDial]')
-  bool isShowXDial;
-
   /// 标记是否为曲线
   bool isCurve;
 
@@ -121,8 +118,7 @@ class BrnPointsLine {
   bool isShowPointText;
 
   BrnPointsLine(
-      {this.isShowXDial = false,
-      this.lineWidth = 2,
+      {this.lineWidth = 2,
       this.pointRadius = 0,
       this.pointColor,
       this.pointInnerRadius,
